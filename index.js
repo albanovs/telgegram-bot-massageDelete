@@ -4,11 +4,11 @@ import fetch from 'node-fetch';
 import express from 'express';
 const token = '5824420414:AAHzTt0wiXmgWDZi4bptsHgievekC0eLjXw';
 const bot = new TelegramBot(token, { polling: true });
+import cors from 'cors'
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(bodyParser.json())
 
 const PORT = 5000;
 
