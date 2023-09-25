@@ -1,8 +1,20 @@
 // const TelegramBot = require('node-telegram-bot-api');
 import TelegramBot from 'node-telegram-bot-api'
 import fetch from 'node-fetch';
+import express from 'express';
 const token = '5824420414:AAHzTt0wiXmgWDZi4bptsHgievekC0eLjXw';
 const bot = new TelegramBot(token, { polling: true });
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json())
+
+const PORT = 4000;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
 // Обработка команды /start
 bot.on('message', (msg) => {
@@ -66,7 +78,7 @@ bot.on('message', async (msg) => {
 
 // Функция для удаления сообщений
 async function deleteMessages(chatId, userId, messageIdToDelete) {
-    const token = '5824420414:AAHzTt0wiXmgWDZi4bptsHgievekC0eLjXw';
+    token = '5824420414:AAHzTt0wiXmgWDZi4bptsHgievekC0eLjXw';
     const apiUrl = `https://api.telegram.org/bot${token}/deleteMessage`;
 
     const params = {
